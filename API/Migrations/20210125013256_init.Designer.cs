@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210125004722_init")]
+    [Migration("20210125013256_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -222,9 +222,44 @@ namespace API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasColumnName("Person_Id")
                         .UseIdentityColumn();
 
+                    b.Property<DateTime?>("Birthdate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("PersonType")
+                        .HasColumnType("int")
+                        .HasColumnName("Type");
+
+                    b.Property<bool>("Registered")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Verified")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("People");
                 });
@@ -234,9 +269,49 @@ namespace API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasColumnName("Settings_Id")
                         .UseIdentityColumn();
 
+                    b.Property<bool>("HomeDelivery")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MenuJson")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuMsgDescription")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MenuMsgExtra")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MenuMsgTitle")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MenuVersion")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("OnlineActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("int")
+                        .HasColumnName("Person_Id");
+
+                    b.Property<string>("PlaceInformationJson")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ShippingCost")
+                        .HasColumnType("money");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PersonId")
+                        .IsUnique()
+                        .HasFilter("[Person_Id] IS NOT NULL");
 
                     b.ToTable("Settings");
                 });
@@ -290,6 +365,21 @@ namespace API.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Shared.Models.DomainModels.Settings", b =>
+                {
+                    b.HasOne("Shared.Models.DomainModels.Person", "Person")
+                        .WithOne("Settings")
+                        .HasForeignKey("Shared.Models.DomainModels.Settings", "PersonId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("Shared.Models.DomainModels.Person", b =>
+                {
+                    b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,12 +8,14 @@ namespace Shared.Models.DomainModels
     {
         // relationships
         public int Id { get; set; }
+        public int? PersonId { get; set; }
+        public Person Person { get; set; }
 
         // fields
         #region Menu information
-        public string MsgTitle { get; set; }
-        public string MsgDescription { get; set; }
-        public string MsgExtra { get; set; }
+        public string MenuMsgTitle { get; set; }
+        public string MenuMsgDescription { get; set; }
+        public string MenuMsgExtra { get; set; }
         #endregion
         #region Open days, hours and more information
         public bool OnlineActive { get; set; }

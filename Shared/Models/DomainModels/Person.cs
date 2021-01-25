@@ -9,6 +9,7 @@ namespace Shared.Models.DomainModels
     {
         // relationships
         public int Id { get; set; }
+        public Settings Settings { get; set; }
 
         // fields
         public string FirstName { get; set; }

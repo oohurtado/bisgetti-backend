@@ -50,24 +50,20 @@ namespace API.Migrations
                 name: "People",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                    Person_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Registered = table.Column<bool>(type: "bit", nullable: false),
+                    Verified = table.Column<bool>(type: "bit", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Birthdate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Type = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Settings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Settings", x => x.Id);
+                    table.PrimaryKey("PK_People", x => x.Person_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,6 +172,34 @@ namespace API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Settings",
+                columns: table => new
+                {
+                    Settings_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Person_Id = table.Column<int>(type: "int", nullable: true),
+                    MenuMsgTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    MenuMsgDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    MenuMsgExtra = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    OnlineActive = table.Column<bool>(type: "bit", nullable: false),
+                    PlaceInformationJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HomeDelivery = table.Column<bool>(type: "bit", nullable: false),
+                    ShippingCost = table.Column<decimal>(type: "money", nullable: false),
+                    MenuVersion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    MenuJson = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settings", x => x.Settings_Id);
+                    table.ForeignKey(
+                        name: "FK_Settings_People_Person_Id",
+                        column: x => x.Person_Id,
+                        principalTable: "People",
+                        principalColumn: "Person_Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -214,6 +238,19 @@ namespace API.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_People_Email",
+                table: "People",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Settings_Person_Id",
+                table: "Settings",
+                column: "Person_Id",
+                unique: true,
+                filter: "[Person_Id] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -234,9 +271,6 @@ namespace API.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "People");
-
-            migrationBuilder.DropTable(
                 name: "Settings");
 
             migrationBuilder.DropTable(
@@ -244,6 +278,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "People");
         }
     }
 }
