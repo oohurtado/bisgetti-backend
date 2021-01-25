@@ -30,10 +30,5 @@ namespace Shared.Models.DomainModels
         public string MenuVersion { get; set; }
         public string MenuJson { get; set; } // object Menu
         #endregion
- 
-        public string _PlaceName { get; set; }
-        public string _PlaceDescription { get; set; }
-        public string _PlaceEmails { get; set; }
-        public string _PlaceKey { get; set; }
     }
 }

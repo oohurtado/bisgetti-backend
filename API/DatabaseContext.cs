@@ -43,10 +43,6 @@ namespace API
 
             modelBuilder.Entity<Settings>(entity =>
             {
-                entity.Property(e => e._PlaceEmails);
-                entity.Property(e => e._PlaceName).HasMaxLength(50);
-                entity.Property(e => e._PlaceDescription).HasMaxLength(50);
-                entity.Property(e => e._PlaceKey).HasMaxLength(10);
                 entity.Property(e => e.HomeDelivery);
                 entity.Property(e => e.Id).HasColumnName("Settings_Id");
                 entity.Property(e => e.MenuJson);
@@ -57,8 +53,6 @@ namespace API
                 entity.Property(e => e.OnlineActive);
                 entity.Property(e => e.PlaceInformationJson);
                 entity.Property(e => e.ShippingCost).HasColumnType("money");
-
-                entity.HasIndex(c => new { c._PlaceKey }).IsUnique().HasFilter(null);
             });
         }
     }

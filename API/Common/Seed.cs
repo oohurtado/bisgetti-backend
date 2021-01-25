@@ -37,6 +37,12 @@ namespace API.Common
         {
             await CreateRolesAsync();
             await CreatePeopleAsync(PersonType.Owner);
+            await CreateSettingsAsync();
+        }
+
+        private async Task CreateSettingsAsync()
+        {
+            await SettingsRepository.CreateAsync();
         }
 
         private async Task CreatePeopleAsync(PersonType personType)

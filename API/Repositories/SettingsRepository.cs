@@ -23,8 +23,20 @@ namespace API.Repositories
             return Context.Settings.Where(expression);
         }
 
-        public async Task AddAsync(Settings settings)
+        public async Task CreateAsync()
         {
+            if (Context.Settings.Any())
+            {
+                return;
+            }
+
+            Settings settings = new Settings()
+            {
+                HomeDelivery = false,
+                OnlineActive = false,
+                ShippingCost = 0,
+            };
+
             await Context.AddAsync(settings);
         }
 

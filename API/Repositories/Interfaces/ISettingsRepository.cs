@@ -11,7 +11,7 @@ namespace API.Repositories.Interfaces
     public interface ISettingsRepository
     {
         IQueryable<Settings> Get(Expression<Func<Settings, bool>> expression);
-        Task AddAsync(Settings settings);
+        Task CreateAsync();
         Task<int> SaveAsync();
     }
 }
