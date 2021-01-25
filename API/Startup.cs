@@ -1,3 +1,4 @@
+using API.Common;
 using API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -55,6 +56,10 @@ namespace API
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            #endregion
+
+            #region seed
+            services.AddTransient<Seed>();
             #endregion
 
             services.AddControllers();

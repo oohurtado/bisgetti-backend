@@ -9,7 +9,6 @@ namespace Shared.Models.DomainModels
     {
         // relationships
         public int Id { get; set; }
-        public Settings Settings { get; set; }
 
         // fields
         public string FirstName { get; set; }
@@ -20,5 +19,7 @@ namespace Shared.Models.DomainModels
         public DateTime CreationTime { get; set; }
         public DateTime? Birthdate { get; set; }
         public PersonType PersonType { get; set; }
+
+        // TODO: field to save restaurant registered
     }
 }

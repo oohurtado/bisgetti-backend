@@ -8,8 +8,6 @@ namespace Shared.Models.DomainModels
     {
         // relationships
         public int Id { get; set; }
-        public int? PersonId { get; set; }
-        public Person Person { get; set; }
 
         // fields
         #region Menu information

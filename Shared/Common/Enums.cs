@@ -6,13 +6,13 @@ namespace Shared.Common
 {
     public enum PersonType
     {
-        [PersonTypeAttributes(Name = "Propietario", IsEmployee = true, IsClient = false, Role = "OWNER")]
+        [PersonTypeAttributes(Name = "Propietario", IsEmployee = true, IsClient = false, Role = "Owner")]
         Owner,
 
-        [PersonTypeAttributes(Name = "Cliente", IsEmployee = false, IsClient = true, Role = "CLIENT")]
+        [PersonTypeAttributes(Name = "Cliente", IsEmployee = false, IsClient = true, Role = "Client")]
         Client,
 
-        [PersonTypeAttributes(Name = "Anónimo", IsEmployee = false, IsClient = true, Role = "ANONYMOUS")]
+        [PersonTypeAttributes(Name = "Anónimo", IsEmployee = false, IsClient = true, Role = "Anonymous")]
         Anonymous,
     }
 }

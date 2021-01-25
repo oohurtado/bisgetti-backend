@@ -38,8 +38,6 @@ namespace API
                 entity.Property(e => e.Registered);
                 entity.Property(e => e.Verified);
 
-                entity.HasOne(p => p.Settings).WithOne(p => p.Person).OnDelete(DeleteBehavior.Cascade);
-
                 entity.HasIndex(c => new { c.Email }).IsUnique().HasFilter(null);
             });
 
@@ -53,7 +51,6 @@ namespace API
                 entity.Property(e => e.MenuMsgTitle).HasMaxLength(50);
                 entity.Property(e => e.MenuVersion).HasMaxLength(50);
                 entity.Property(e => e.OnlineActive);
-                entity.Property(e => e.PersonId).HasColumnName("Person_Id");
                 entity.Property(e => e.PlaceInformationJson);
                 entity.Property(e => e.ShippingCost).HasColumnType("money");
             });
