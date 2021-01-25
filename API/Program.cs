@@ -1,5 +1,7 @@
+using API.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +15,13 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            //CreateHostBuilder(args).Build().Run();
+
+            #region seed
+            var host = CreateHostBuilder(args).Build();
+            RunSeeding(host);
+            host.Run();
+            #endregion
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +30,17 @@ namespace API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        #region seed
+        private static void RunSeeding(IHost host)
+        {
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<Seed>();
+                seeder.SeedAsync().Wait();
+            }
+        }
+        #endregion
     }
 }
