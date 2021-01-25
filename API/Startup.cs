@@ -1,5 +1,7 @@
 using API.Common;
 using API.Models;
+using API.Repositories;
+using API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -61,6 +63,8 @@ namespace API
 
             #region seed
             services.AddTransient<Seed>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<ISettingsRepository, SettingsRepository>();
             #endregion
 
             services.AddControllers();

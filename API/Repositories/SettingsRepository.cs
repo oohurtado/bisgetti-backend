@@ -2,6 +2,8 @@
 using Shared.Models.DomainModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,14 +18,19 @@ namespace API.Repositories
             Context = context;
         }
 
-        public Task AddAsync(Settings settings)
+        public IQueryable<Settings> Get(Expression<Func<Settings, bool>> expression)
         {
-            throw new NotImplementedException();
+            return Context.Settings.Where(expression);
         }
 
-        public Task<int> SaveAsync()
+        public async Task AddAsync(Settings settings)
         {
-            throw new NotImplementedException();
+            await Context.AddAsync(settings);
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            return await Context.SaveChangesAsync();
         }
     }
 }
