@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210125043720_init2")]
-    partial class init2
+    [Migration("20210125190359_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -272,7 +272,7 @@ namespace API.Migrations
                         .HasColumnName("Settings_Id")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("HomeDelivery")
+                    b.Property<bool?>("HomeDelivery")
                         .HasColumnType("bit");
 
                     b.Property<string>("MenuJson")
@@ -294,16 +294,34 @@ namespace API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<bool>("OnlineActive")
+                    b.Property<bool?>("OnlineActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("PlaceInformationJson")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ShippingCost")
+                    b.Property<decimal?>("ShippingCost")
                         .HasColumnType("money");
 
+                    b.Property<string>("_PlaceDescription")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("_PlaceEmails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("_PlaceKey")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("_PlaceName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("_PlaceKey")
+                        .IsUnique();
 
                     b.ToTable("Settings");
                 });

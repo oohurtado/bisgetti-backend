@@ -15,19 +15,25 @@ namespace Shared.Models.DomainModels
         public string MenuMsgDescription { get; set; }
         public string MenuMsgExtra { get; set; }
         #endregion
+
         #region Open days, hours and more information
-        public bool OnlineActive { get; set; }
+        public bool? OnlineActive { get; set; }
         public string PlaceInformationJson { get; set; }
         #endregion
+
         #region home delivery
-        public bool HomeDelivery { get; set; }
-        public decimal ShippingCost { get; set; }
+        public bool? HomeDelivery { get; set; }
+        public decimal? ShippingCost { get; set; }
         #endregion
+
         #region current menu
         public string MenuVersion { get; set; }
         public string MenuJson { get; set; } // object Menu
-        #endregion    
-
-        // TODO: necesito campo para relacionar a persona owner
+        #endregion
+ 
+        public string _PlaceName { get; set; }
+        public string _PlaceDescription { get; set; }
+        public string _PlaceEmails { get; set; }
+        public string _PlaceKey { get; set; }
     }
 }

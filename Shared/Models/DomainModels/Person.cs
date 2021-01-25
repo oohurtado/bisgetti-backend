@@ -19,7 +19,5 @@ namespace Shared.Models.DomainModels
         public DateTime CreationTime { get; set; }
         public DateTime? Birthdate { get; set; }
         public PersonType PersonType { get; set; }
-
-        // TODO: field to save restaurant registered
     }
 }
