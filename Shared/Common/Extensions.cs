@@ -56,4 +56,10 @@ namespace Shared.Common
                             .Name;
         }
     }
+
+    public static class ClaimTypes
+    {
+        public const string PersonId = "http://schemas.xmlsoap.org/ws/2021/identity/claims/personId";
+        public const string UserId = "http://schemas.xmlsoap.org/ws/2021/identity/claims/userId";
+    }
 }

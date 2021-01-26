@@ -59,5 +59,10 @@ namespace API.Repositories
         {
             return await Context.SaveChangesAsync();
         }
+
+        public void Update(Person person)
+        {
+            Context.Entry(person).State = EntityState.Modified;
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace API.Repositories.Interfaces
         IQueryable<Person> Get(Expression<Func<Person, bool>> expression);
         Task AddAsync(Person person);
         Task<int> SaveAsync();
+        void Update(Person person);
     }
 }
