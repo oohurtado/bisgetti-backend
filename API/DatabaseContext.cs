@@ -31,9 +31,8 @@ namespace API
                 entity.Property(e => e.Birthdate).HasColumnType("datetime");
                 entity.Property(e => e.CreationTime).IsRequired().HasColumnType("datetime");
                 entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.FirstName).HasMaxLength(50);
+                entity.Property(e => e.Name).HasMaxLength(50);
                 entity.Property(e => e.Id).HasColumnName("Person_Id");
-                entity.Property(e => e.LastName).HasMaxLength(50);
                 entity.Property(e => e.PersonType).IsRequired().HasColumnName("Type");
                 entity.Property(e => e.Registered).IsRequired();
                 entity.Property(e => e.Verified).IsRequired();

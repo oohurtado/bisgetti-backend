@@ -11,11 +11,7 @@ namespace Shared.Models.DTOs
     {
         [Required]
         [StringLength(50, MinimumLength = 1)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(50, MinimumLength = 1)]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 1)]

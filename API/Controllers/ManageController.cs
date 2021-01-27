@@ -65,8 +65,7 @@ namespace API.Controllers
                             Verified = false,
                             CreationTime = DateTime.Now,
                             Email = dto.Email,
-                            FirstName = dto.FirstName,
-                            LastName = dto.LastName,
+                            Name = dto.Name,
                             PersonType = PersonType.Client,
                         };
 
@@ -78,8 +77,7 @@ namespace API.Controllers
                         person.CreationTime = DateTime.Now;
                         person.Registered = true;
                         person.Verified = true;
-                        person.FirstName = dto.FirstName;
-                        person.LastName = dto.LastName;
+                        person.Name = dto.Name;
 
                         PersonRepository.Update(person);
                         await PersonRepository.SaveAsync();

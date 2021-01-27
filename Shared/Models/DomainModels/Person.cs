@@ -11,8 +11,7 @@ namespace Shared.Models.DomainModels
         public int Id { get; set; }
 
         // fields
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
         public bool Registered { get; set; }
         public bool Verified { get; set; }
