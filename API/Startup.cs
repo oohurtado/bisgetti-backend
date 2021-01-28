@@ -101,7 +101,19 @@ namespace API
 
             app.UseRouting();
 
+            #region authentication
+            app.UseAuthentication();
+            #endregion
             app.UseAuthorization();
+
+            #region cors
+            app
+                .UseCors(builder =>
+                    builder
+                        .WithOrigins("*")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            #endregion
 
             app.UseEndpoints(endpoints =>
             {

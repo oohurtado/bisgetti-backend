@@ -86,12 +86,12 @@ namespace API.Controllers
                     await UserManager.AddToRoleAsync(user, person.PersonType.GetPersonTypeRole());
                     
                     var claims = CustomToken.GetClaims(user.Id, person.Id, person.Email, person.PersonType.GetPersonTypeRole());
-                    var token = CustomToken.BuildToken(claims, Configuration["JWT:Key"]);
+                    var token = CustomToken.BuildToken(claims, person.PersonType.GetPersonTypeRole(), Configuration["JWT:Key"]);
                     return token;
                 }
                 else
                 {
-                    return BadRequest(new Response(ResponseMessageType.WrongCredentials));
+                    return BadRequest(new Response(ResponseMessageType.AlreadyExist));
                 }
             }
             catch (Exception ex)
@@ -117,7 +117,7 @@ namespace API.Controllers
                         .FirstOrDefaultAsync();
 
                     var claims = CustomToken.GetClaims(user.Id, person.Id, person.Email, roles.FirstOrDefault());
-                    var token = CustomToken.BuildToken(claims, Configuration["JWT:Key"]);
+                    var token = CustomToken.BuildToken(claims, person.PersonType.GetPersonTypeRole(), Configuration["JWT:Key"]);
                     return token;
                 }
                 else

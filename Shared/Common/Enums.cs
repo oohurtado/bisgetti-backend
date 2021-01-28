@@ -30,5 +30,8 @@ namespace Shared.Common
 
         [Display(Name = "Error, el servidor no pudo entender la solicitud debido a una sintaxis incorrecta")]
         BadRequest,
+
+        [Display(Name = "Error, este correo electrónico ya existe")]
+        AlreadyExist,
     }
 }
