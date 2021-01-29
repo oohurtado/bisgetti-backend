@@ -12,7 +12,7 @@ namespace API.Common
 {
     public static class CustomToken
     {
-        public static UserToken BuildToken(List<Claim> claims, string role, string jwtKey)
+        public static UserToken BuildToken(List<Claim> claims, string jwtKey)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -30,7 +30,6 @@ namespace API.Common
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = expiration,
-                Role = role
             };
 
             return userToken;
