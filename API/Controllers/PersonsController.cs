@@ -43,11 +43,39 @@ namespace API.Controllers
                         Role = role,
                     }).FirstOrDefaultAsync();
 
+                dto.Name = GetFixedName(dto.Name);
+
                 return Ok(dto);
             }
             catch
             {
                 return BadRequest(new Response(ResponseMessageType.UnknownError));
+            }
+        }
+
+        private static string GetFixedName(string name)
+        {
+            var arr = name.Split(' ');
+
+            if (arr.Length == 1 || arr.Length == 2)
+            {
+                return name;
+            }
+            else if (arr.Length == 3)
+            {
+                return $"{arr[0]} {arr[1]}";
+            }
+            else if (arr.Length == 4)
+            {
+                return $"{arr[0]} {arr[2]}";
+            }
+            else if (arr.Length >= 5)
+            {
+                return $"{arr[0]} {arr[1]}";
+            }
+            else
+            {
+                return arr[0];
             }
         }
     }
