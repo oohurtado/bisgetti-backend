@@ -17,6 +17,27 @@ namespace Shared.Common
         Anonymous,
     }
 
+    public enum ProductType
+    {
+        [Display(Name = "Comida")]
+        Food,
+
+        [Display(Name = "Bebida")]
+        Drink,
+    }
+
+    public enum ProductAvailability
+    {
+        [Display(Name = "Localmente y en línea")]
+        Complete,
+
+        [Display(Name = "Sólo localmente")]
+        Local,
+
+        [Display(Name = "Sólo en línea")]
+        Online,
+    }
+
     public enum ResponseMessageType
     {
         [Display(Name = "Error desconocido, contacte a su administrador")]

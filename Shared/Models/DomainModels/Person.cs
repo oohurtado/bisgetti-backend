@@ -7,8 +7,14 @@ namespace Shared.Models.DomainModels
 {
     public class Person
     {
+        public Person()
+        {
+            Addresses = new HashSet<Address>();
+        }
+
         // relationships
         public int Id { get; set; }
+        public ICollection<Address> Addresses { get; set; }
 
         // fields
         public string Name { get; set; }
