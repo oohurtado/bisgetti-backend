@@ -61,10 +61,11 @@ namespace API
             });
             #endregion
 
-            #region seed
+            #region injection
             services.AddTransient<Seed>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<ISettingsRepository, SettingsRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             #endregion
 
             services.AddControllers();
