@@ -14,6 +14,7 @@ namespace Shared.Models.DomainModels
         public Person Person { get; set; }
 
         // fields
+        public string Name { get; set; }
         public string PostalCode { get; set; }
         public string Street { get; set; }
         public string OutdoorNumber { get; set; }

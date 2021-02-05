@@ -47,7 +47,9 @@ namespace API
             services.AddAutoMapper(configuration =>
             {
                 configuration.CreateMap<ProductCreateDTO, Product>();
-                configuration.CreateMap<ProductEditDTO, Product>();
+                configuration.CreateMap<ProductEditDTO, Product>();                
+                configuration.CreateMap<AddressCreateDTO, Address>();
+                configuration.CreateMap<AddressEditDTO, Address>();
             }, typeof(Startup));
             #endregion
 
@@ -77,6 +79,7 @@ namespace API
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<ISettingsRepository, SettingsRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
             #endregion
 
             services.AddControllers();
