@@ -2,6 +2,7 @@ using API.Common;
 using API.Models;
 using API.Repositories;
 using API.Repositories.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Shared;
+using Shared.Models.DomainModels;
+using Shared.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +41,14 @@ namespace API
         {
             #region cors
             services.AddCors();
+            #endregion
+
+            #region mapping
+            services.AddAutoMapper(configuration =>
+            {
+                configuration.CreateMap<ProductCreateDTO, Product>();
+                configuration.CreateMap<ProductEditDTO, Product>();
+            }, typeof(Startup));
             #endregion
 
             #region db context
