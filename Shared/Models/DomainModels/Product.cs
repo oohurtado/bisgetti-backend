@@ -15,11 +15,11 @@ namespace Shared.Models.DomainModels
         // fields
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public bool New { get; set; }
-        public bool Available { get; set; }
+        public bool IsNew { get; set; }
+        public bool IsAvailable { get; set; }
         public ProductType ProductType { get; set; }
         public ProductAvailability ProductAvailability { get; set; }
-        public bool Hidden { get; set; }
+        public bool IsHidden { get; set; }
         public string Ingredients { get; set; }
     }
 }

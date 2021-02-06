@@ -61,8 +61,8 @@ namespace API.Controllers
                     {
                         person = new Person()
                         {
-                            Registered = true,
-                            Verified = false,
+                            IsRegistered = true,
+                            IsVerified = false,
                             CreationTime = DateTime.Now,
                             Email = dto.Email,
                             Name = dto.Name,
@@ -75,8 +75,8 @@ namespace API.Controllers
                     else
                     {
                         person.CreationTime = DateTime.Now;
-                        person.Registered = true;
-                        person.Verified = true;
+                        person.IsRegistered = true;
+                        person.IsVerified = true;
                         person.Name = dto.Name;
 
                         PersonRepository.Update(person);

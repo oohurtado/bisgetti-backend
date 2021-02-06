@@ -20,10 +20,10 @@ namespace Shared.Models.DTOs
         public decimal Price { get; set; }
 
         [Required]
-        public bool New { get; set; }
+        public bool IsNew { get; set; }
 
         [Required]
-        public bool Available { get; set; }
+        public bool IsAvailable { get; set; }
 
         [Required]
         public ProductType ProductType { get; set; }
@@ -32,7 +32,7 @@ namespace Shared.Models.DTOs
         public ProductAvailability ProductAvailability { get; set; }
 
         [Required]
-        public bool Hidden { get; set; }
+        public bool IsHidden { get; set; }
 
         [StringLength(100, MinimumLength = 0)]
         public string Ingredients { get; set; }

@@ -54,8 +54,8 @@ namespace API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Registered = table.Column<bool>(type: "bit", nullable: false),
-                    Verified = table.Column<bool>(type: "bit", nullable: false),
+                    IsRegistered = table.Column<bool>(type: "bit", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime", nullable: false),
                     Birthdate = table.Column<DateTime>(type: "datetime", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false)
@@ -73,11 +73,11 @@ namespace API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: false),
-                    New = table.Column<bool>(type: "bit", nullable: false),
-                    Available = table.Column<bool>(type: "bit", nullable: false),
+                    IsNew = table.Column<bool>(type: "bit", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Availability = table.Column<int>(type: "int", nullable: false),
-                    Hidden = table.Column<bool>(type: "bit", nullable: false),
+                    IsHidden = table.Column<bool>(type: "bit", nullable: false),
                     Ingredients = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
@@ -94,9 +94,9 @@ namespace API.Migrations
                     MenuMsgTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     MenuMsgDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     MenuMsgExtra = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    OnlineActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsOnlineActive = table.Column<bool>(type: "bit", nullable: false),
                     PlaceInformationJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HomeDelivery = table.Column<bool>(type: "bit", nullable: false),
+                    HasHomeDelivery = table.Column<bool>(type: "bit", nullable: false),
                     ShippingCost = table.Column<decimal>(type: "money", nullable: false),
                     MenuVersion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     MenuJson = table.Column<string>(type: "nvarchar(max)", nullable: true)

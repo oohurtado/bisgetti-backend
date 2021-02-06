@@ -292,6 +292,12 @@ namespace API.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsRegistered")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -299,12 +305,6 @@ namespace API.Migrations
                     b.Property<int>("PersonType")
                         .HasColumnType("int")
                         .HasColumnName("Type");
-
-                    b.Property<bool>("Registered")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Verified")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -322,23 +322,23 @@ namespace API.Migrations
                         .HasColumnName("Product_Id")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("Available")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Hidden")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Ingredients")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsHidden")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("New")
-                        .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
@@ -367,7 +367,10 @@ namespace API.Migrations
                         .HasColumnName("Settings_Id")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("HomeDelivery")
+                    b.Property<bool>("HasHomeDelivery")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOnlineActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("MenuJson")
@@ -388,9 +391,6 @@ namespace API.Migrations
                     b.Property<string>("MenuVersion")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("OnlineActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("PlaceInformationJson")
                         .HasColumnType("nvarchar(max)");

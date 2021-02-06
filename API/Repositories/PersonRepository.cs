@@ -34,8 +34,8 @@ namespace API.Repositories
                 {
                     Email = email,
                     PersonType = personType,
-                    Registered = false,
-                    Verified = false,
+                    IsRegistered = false,
+                    IsVerified = false,
                     CreationTime = DateTime.Now,
                 };
 

@@ -32,8 +32,8 @@ namespace API.Repositories
 
             Settings settings = new Settings()
             {
-                HomeDelivery = false,
-                OnlineActive = false,
+                HasHomeDelivery = false,
+                IsOnlineActive = false,
                 ShippingCost = 0,
             };
 

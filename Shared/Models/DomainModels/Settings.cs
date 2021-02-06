@@ -17,12 +17,12 @@ namespace Shared.Models.DomainModels
         #endregion
 
         #region Open days, hours and more information
-        public bool OnlineActive { get; set; }
+        public bool IsOnlineActive { get; set; }
         public string PlaceInformationJson { get; set; }
         #endregion
 
         #region home delivery
-        public bool HomeDelivery { get; set; }
+        public bool HasHomeDelivery { get; set; }
         public decimal ShippingCost { get; set; }
         #endregion
 

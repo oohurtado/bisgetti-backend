@@ -54,8 +54,8 @@ namespace API
                 entity.Property(e => e.Name).HasMaxLength(50);
                 entity.Property(e => e.Id).HasColumnName("Person_Id");
                 entity.Property(e => e.PersonType).IsRequired().HasColumnName("Type");
-                entity.Property(e => e.Registered).IsRequired();
-                entity.Property(e => e.Verified).IsRequired();
+                entity.Property(e => e.IsRegistered).IsRequired();
+                entity.Property(e => e.IsVerified).IsRequired();
 
                 entity.HasMany(p => p.Addresses).WithOne(p => p.Person).OnDelete(DeleteBehavior.Cascade);
 
@@ -64,12 +64,12 @@ namespace API
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.Available).IsRequired();
-                entity.Property(e => e.Hidden).IsRequired();
+                entity.Property(e => e.IsAvailable).IsRequired();
+                entity.Property(e => e.IsHidden).IsRequired();
                 entity.Property(e => e.Id).HasColumnName("Product_Id");
                 entity.Property(e => e.Ingredients).HasMaxLength(100);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.New).IsRequired();
+                entity.Property(e => e.IsNew).IsRequired();
                 entity.Property(e => e.Price).HasColumnType("money");
                 entity.Property(e => e.ProductAvailability).HasColumnName("Availability");
                 entity.Property(e => e.ProductType).HasColumnName("Type");
@@ -79,14 +79,14 @@ namespace API
 
             modelBuilder.Entity<Settings>(entity =>
             {
-                entity.Property(e => e.HomeDelivery);
+                entity.Property(e => e.HasHomeDelivery);
                 entity.Property(e => e.Id).HasColumnName("Settings_Id");
                 entity.Property(e => e.MenuJson);
                 entity.Property(e => e.MenuMsgDescription).HasMaxLength(50);
                 entity.Property(e => e.MenuMsgExtra).HasMaxLength(50);
                 entity.Property(e => e.MenuMsgTitle).HasMaxLength(50);
                 entity.Property(e => e.MenuVersion).HasMaxLength(50);
-                entity.Property(e => e.OnlineActive);
+                entity.Property(e => e.IsOnlineActive);
                 entity.Property(e => e.PlaceInformationJson);
                 entity.Property(e => e.ShippingCost).HasColumnType("money");
             });
