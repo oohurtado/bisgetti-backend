@@ -37,7 +37,7 @@ namespace API
                 entity.Property(e => e.InteriorNumber).HasMaxLength(10);
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.OutdoorNumber).IsRequired().HasMaxLength(10);
-                entity.Property(e => e.PersonId).HasColumnName("Person_Id");
+                entity.Property(e => e.PersonId).IsRequired().HasColumnName("Person_Id");
                 entity.Property(e => e.PostalCode).IsRequired().HasMaxLength(10);
                 entity.Property(e => e.State).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.Street).IsRequired().HasMaxLength(50);

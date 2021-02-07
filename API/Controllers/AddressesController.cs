@@ -37,7 +37,11 @@ namespace API.Controllers
         {
             try
             {
+                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var personId = int.Parse(val);
+
                 var address = Mapper.Map<Address>(dto);
+                address.PersonId = personId;
 
                 await AddressRepository.AddAsync(address);
                 await AddressRepository.SaveAsync();
@@ -81,8 +85,11 @@ namespace API.Controllers
         {
             try
             {
+                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var personId = int.Parse(val);
+
                 var address = await AddressRepository
-                    .Get(p => p.Id == id, withTies)
+                    .Get(p => p.Id == id && p.PersonId == personId, withTies)
                     .FirstOrDefaultAsync();
 
                 if (address == null)
@@ -106,8 +113,11 @@ namespace API.Controllers
                 if (id != dto.Id)
                     return BadRequest(new Response(ResponseMessageType.BadRequest));
 
+                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var personId = int.Parse(val);
+
                 var address = await AddressRepository
-                    .Get(p => p.Id == id)
+                    .Get(p => p.Id == id && p.PersonId == personId)
                     .FirstOrDefaultAsync();
 
                 Mapper.Map(dto, address);
@@ -133,7 +143,12 @@ namespace API.Controllers
         {
             try
             {
-                var address = await AddressRepository.Get(p => p.Id == id).FirstOrDefaultAsync();
+                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var personId = int.Parse(val);
+
+                var address = await AddressRepository
+                    .Get(p => p.Id == id && p.PersonId == personId)
+                    .FirstOrDefaultAsync();
 
                 if (address == null)
                 {
