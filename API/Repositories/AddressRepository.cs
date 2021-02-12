@@ -49,5 +49,29 @@ namespace API.Repositories
         {
             Context.Entry(address).State = EntityState.Modified;
         }
+
+        public IQueryable<Address> GetByPage(string column, string order, int pageNumber, int pageSize, string term, out int grandTotal)
+        {
+            IQueryable<Address> addresses;
+            IOrderedQueryable<Address> ioq = null;
+
+            var iq = Context.Addresses.AsQueryable();
+
+            if (!String.IsNullOrEmpty(term))
+                iq = iq.Where(p => p.Name.Contains(term));
+
+            grandTotal = iq.Count();
+
+            if (column == "name" && order == "asc")
+                ioq = iq.OrderBy(p => p.Name);
+            else if (column == "name" && order == "desc")
+                ioq = iq.OrderByDescending(p => p.Name);
+
+            addresses = ioq
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize);
+
+            return addresses;
+        }
     }
 }

@@ -60,19 +60,18 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet(template: "getAll")]
-        public async Task<ActionResult<List<Address>>> Get()
+        [HttpGet(template: "getPage/{column}/{order}/{pageNumber}/{pageSize}")]
+        public async Task<ActionResult<PageData<Address>>> GetPage(string column, string order, int pageNumber, int pageSize, string term = null)
         {
             try
             {
-                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
-                var personId = int.Parse(val);
-
+                // getting page
                 var addresses = await AddressRepository
-                    .Get(p => p.PersonId == personId)
+                    .GetByPage(column, order, pageNumber, pageSize, term, out int grandTotal)
                     .ToListAsync();
 
-                return addresses;
+                var pageData = new PageData<Address>(addresses, grandTotal);
+                return pageData;
             }
             catch (Exception ex)
             {

@@ -56,7 +56,7 @@ namespace API.Controllers
         }
 
         [HttpGet(template: "getPage/{column}/{order}/{pageNumber}/{pageSize}")]
-        public async Task<ActionResult<PageData<Product>>> GetPage(string column, string order, int pageNumber, int pageSize, string term = null)//(, string term = null)
+        public async Task<ActionResult<PageData<Product>>> GetPage(string column, string order, int pageNumber, int pageSize, string term = null)
         {
             try
             {
