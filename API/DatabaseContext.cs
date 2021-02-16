@@ -44,6 +44,8 @@ namespace API
                 entity.Property(e => e.Suburb).IsRequired().HasMaxLength(50);
 
                 entity.HasOne(p => p.Person).WithMany(p => p.Addresses);
+
+                entity.HasIndex(c => new { c.PersonId, c.Name }).IsUnique().HasFilter(null);
             });
 
             modelBuilder.Entity<Person>(entity =>
