@@ -60,7 +60,7 @@ namespace API.Controllers
         }
 
         [HttpGet(template: "getMenu")]
-        public async Task<ActionResult<Menu>> GetPage()
+        public async Task<ActionResult<Menu>> GetMenu()
         {
             try
             {
