@@ -33,8 +33,8 @@ namespace API.Controllers
             SettingsRepository = settingsRepository;
         }
 
-        [HttpPost(template: "generateMenu")]
-        public async Task<ActionResult> GenerateMenu([FromBody] RestaurantGenerateMenuDTO dto)
+        [HttpPost(template: "createMenu")]
+        public async Task<ActionResult> createMenu([FromBody] RestaurantGenerateMenuDTO dto)
         {
             try
             {                
