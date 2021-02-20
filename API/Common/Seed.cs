@@ -43,6 +43,7 @@ namespace API.Common
         private async Task CreateSettingsAsync()
         {
             await SettingsRepository.CreateAsync();
+            await SettingsRepository.SaveAsync();
         }
 
         private async Task CreatePeopleAsync(PersonType personType)
