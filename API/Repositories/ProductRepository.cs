@@ -1,5 +1,6 @@
 ﻿using API.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Shared.Models.DomainModels;
 using System;
 using System.Collections.Generic;

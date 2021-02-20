@@ -28,7 +28,7 @@ namespace Shared.Models.DomainModels
 
         #region current menu
         public string MenuVersion { get; set; }
-        public string MenuJson { get; set; } // object Menu
+        public string MenuProductsJson { get; set; }
         #endregion
     }
 }

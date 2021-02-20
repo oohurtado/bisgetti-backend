@@ -1,4 +1,5 @@
 ﻿using API.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Shared.Models.DomainModels;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,15 @@ namespace API.Repositories
             await Context.AddAsync(settings);
         }
 
+        public void Update(Settings settings)
+        {
+            Context.Entry(settings).State = EntityState.Modified;
+        }
+
         public async Task<int> SaveAsync()
         {
             return await Context.SaveChangesAsync();
         }
+
     }
 }

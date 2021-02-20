@@ -12,6 +12,7 @@ namespace API.Repositories.Interfaces
     {
         IQueryable<Settings> Get(Expression<Func<Settings, bool>> expression);
         Task CreateAsync();
+        void Update(Settings settings);
         Task<int> SaveAsync();
     }
 }

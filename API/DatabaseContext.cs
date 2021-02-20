@@ -83,7 +83,7 @@ namespace API
             {
                 entity.Property(e => e.HasHomeDelivery);
                 entity.Property(e => e.Id).HasColumnName("Settings_Id");
-                entity.Property(e => e.MenuJson);
+                entity.Property(e => e.MenuProductsJson);
                 entity.Property(e => e.MenuMsgDescription).HasMaxLength(50);
                 entity.Property(e => e.MenuMsgExtra).HasMaxLength(50);
                 entity.Property(e => e.MenuMsgTitle).HasMaxLength(50);
