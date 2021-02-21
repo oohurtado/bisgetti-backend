@@ -13,7 +13,6 @@ namespace Shared.Models.DomainModels
         #region Menu information
         public string MenuMsgTitle { get; set; }
         public string MenuMsgDescription { get; set; }
-        public string MenuMsgExtra { get; set; }
         #endregion
 
         #region Open days, hours and more information
