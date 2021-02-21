@@ -34,7 +34,7 @@ namespace API.Controllers
         }
 
         [HttpPost(template: "createMenu")]
-        public async Task<ActionResult> createMenu([FromBody] RestaurantGenerateMenuDTO dto)
+        public async Task<ActionResult> CreateMenu([FromBody] RestaurantGenerateMenuDTO dto)
         {
             try
             {                
