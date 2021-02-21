@@ -48,7 +48,7 @@ namespace API.Controllers
         }
 
         [HttpGet(template: "getName")]
-        public async Task<ActionResult<PersonNameDTO>> GetBasics()
+        public async Task<ActionResult<PersonNameDTO>> GetName()
         {
             try
             {
