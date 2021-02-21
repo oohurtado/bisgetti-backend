@@ -27,25 +27,43 @@ namespace API.Controllers
             PersonRepository = personRepository;
         }
 
-        [HttpGet(template: "getBasics")]
-        public async Task<ActionResult<PersonBasicsDTO>> GetBasics()
+        [HttpGet(template: "getRole")]
+        public ActionResult<PersonRoleDTO> GetRole()
         {
             try
             {
                 var role = User.FindFirstValue(System.Security.Claims.ClaimTypes.Role);
+
+                var dto = new PersonRoleDTO()
+                {
+                    Role = role,
+                };
+
+                return dto;
+            }
+            catch
+            {
+                return BadRequest(new Response(ResponseMessageType.UnknownError));
+            }
+        }
+
+        [HttpGet(template: "getName")]
+        public async Task<ActionResult<PersonNameDTO>> GetBasics()
+        {
+            try
+            {
                 var personId = int.Parse(User.FindFirstValue(Shared.Common.ClaimTypes.PersonId));
 
                 var dto = await PersonRepository
                     .Get(p => p.Id == personId)
-                    .Select(p => new PersonBasicsDTO()
+                    .Select(p => new PersonNameDTO()
                     {
                         Name = p.Name,
-                        Role = role,
                     }).FirstOrDefaultAsync();
 
                 dto.Name = GetFixedName(dto.Name);
 
-                return Ok(dto);
+                return dto;
             }
             catch
             {
