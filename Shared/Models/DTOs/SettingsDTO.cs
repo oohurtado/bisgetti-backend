@@ -26,7 +26,7 @@ namespace Shared.Models.DTOs
         [StringLength(250, MinimumLength = 1)]
         public string Address { get; set; }
 
-        [StringLength(100, MinimumLength = 1)]
+        [StringLength(250, MinimumLength = 1)]
         public string OpenHours { get; set; }
 
         [StringLength(250, MinimumLength = 1)]

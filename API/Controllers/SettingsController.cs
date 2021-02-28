@@ -116,7 +116,6 @@ namespace API.Controllers
                 var settings = await SettingsRepository.Get(p => true)
                     .FirstOrDefaultAsync();
 
-
                 SettingsMenuTitlesDTO model = new SettingsMenuTitlesDTO();
                 MenuTitlesJson menuTitlesJson = new MenuTitlesJson();
                 if (!string.IsNullOrEmpty(settings.MenuMessagesJson))
@@ -165,14 +164,13 @@ namespace API.Controllers
         public async Task<ActionResult<SettingsPlaceInformationDTO>> GetPlaceInformation()
         {
             try
-            {
+            {                
                 var settings = await SettingsRepository.Get(p => true)
                     .FirstOrDefaultAsync();
 
-
                 SettingsPlaceInformationDTO model = new SettingsPlaceInformationDTO();
                 PlaceInformationJson placeInformationJson = new PlaceInformationJson();
-                if (!string.IsNullOrEmpty(settings.MenuMessagesJson))
+                if (!string.IsNullOrEmpty(settings.PlaceInformationJson))
                 {
                     placeInformationJson = JsonConvert.DeserializeObject<PlaceInformationJson>(settings.PlaceInformationJson);
 
