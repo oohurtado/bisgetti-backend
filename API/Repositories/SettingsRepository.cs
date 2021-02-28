@@ -36,8 +36,6 @@ namespace API.Repositories
                 HasHomeDelivery = false,
                 IsOnlineActive = false,
                 ShippingCost = 0,
-                MenuMsgTitle = "Sin título",
-                MenuMsgDescription = "Sin descripción"
             };
 
             await Context.AddAsync(settings);
