@@ -36,4 +36,11 @@ namespace Shared.Models.DTOs
         public string Emails { get; set; }
     }
 
+    public class SettingsOnlineOptionsDTO
+    {
+        public bool IsOnlineActive { get; set; }
+        public bool HasHomeDelivery { get; set; }
+        public decimal ShippingCost { get; set; }
+    }
+
 }

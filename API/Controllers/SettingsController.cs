@@ -215,5 +215,51 @@ namespace API.Controllers
                 return BadRequest(new Response(ResponseMessageType.UnknownError, ex));
             }
         }
+
+        [HttpGet(template: "getOnlineOptions")]
+        public async Task<ActionResult<SettingsOnlineOptionsDTO>> GetOnlineOptions()
+        {
+            try
+            {
+                var settings = await SettingsRepository.Get(p => true)
+                    .FirstOrDefaultAsync();
+
+                SettingsOnlineOptionsDTO model = new SettingsOnlineOptionsDTO()
+                {
+                    IsOnlineActive = settings.IsOnlineActive,
+                    HasHomeDelivery = settings.HasHomeDelivery,
+                    ShippingCost = settings.ShippingCost,
+                };
+
+                return model;
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Response(ResponseMessageType.UnknownError, ex));
+            }
+        }
+
+        [HttpPut(template: "updateOnlineOptions")]
+        public async Task<ActionResult> UpdateOnlineOptions([FromBody] SettingsOnlineOptionsDTO dto)
+        {
+            try
+            {
+                var settings = await SettingsRepository.Get(p => true)
+                    .FirstOrDefaultAsync();
+
+                settings.IsOnlineActive = dto.IsOnlineActive;
+                settings.HasHomeDelivery = dto.HasHomeDelivery;
+                settings.ShippingCost = dto.ShippingCost;
+
+                await SettingsRepository.SaveAsync();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Response(ResponseMessageType.UnknownError, ex));
+            }
+        }
     }
 }
