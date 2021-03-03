@@ -63,7 +63,7 @@ namespace API.Common
 
             foreach (var role in roles)
             {
-                bool exists = await RoleManager.RoleExistsAsync(role.GetPersonTypeName());
+                bool exists = await RoleManager.RoleExistsAsync(role.GetPersonTypeRole());
                 if (!exists)
                 {
                     await RoleManager.CreateAsync(new IdentityRole(role.GetPersonTypeRole()));
