@@ -18,8 +18,7 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiController]    
     public class SettingsController : ControllerBase
     {
         public IProductRepository ProductRepository { get; }
@@ -34,6 +33,7 @@ namespace API.Controllers
             SettingsRepository = settingsRepository;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost(template: "createMenu")]
         public async Task<ActionResult> CreateMenu([FromBody] SettingsGenerateMenuDTO dto)
         {
@@ -87,6 +87,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete(template: "deleteMenu")]
         public async Task<ActionResult> DeleteMenu()
         {
@@ -135,6 +136,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut(template: "updateMenuTitles")]
         public async Task<ActionResult> UpdateMenuTitles([FromBody] SettingsMenuTitlesDTO dto)
         {
@@ -189,6 +191,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut(template: "updatePlaceInformation")]
         public async Task<ActionResult> UpdatePlaceInformation([FromBody] PlaceInformationJson dto)
         {
@@ -240,6 +243,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut(template: "updateOnlineOptions")]
         public async Task<ActionResult> UpdateOnlineOptions([FromBody] SettingsOnlineOptionsDTO dto)
         {
