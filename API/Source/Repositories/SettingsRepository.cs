@@ -1,4 +1,4 @@
-﻿using API.Repositories.Interfaces;
+﻿using API.Source.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Models.DomainModels;
 using System;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Repositories
+namespace API.Source.Repositories
 {
     public class SettingsRepository : ISettingsRepository
     {

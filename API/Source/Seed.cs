@@ -1,15 +1,15 @@
 ﻿using API.Models;
-using API.Repositories.Interfaces;
+using API.Source.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Shared;
-using Shared.Common;
+using Shared.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Common
+namespace API.Source
 {
     public class Seed
     {

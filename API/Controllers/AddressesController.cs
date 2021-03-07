@@ -1,4 +1,4 @@
-﻿using API.Repositories.Interfaces;
+﻿using API.Source.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Shared.Common;
 using Shared.Models.Common;
 using Shared.Models.DomainModels;
 using Shared.Models.DTOs;
+using Shared.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace API.Controllers
         {
             try
             {
-                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var val = User.FindFirstValue(Shared.Source.ClaimTypes.PersonId);
                 var personId = int.Parse(val);
 
                 var address = Mapper.Map<Address>(dto);
@@ -88,7 +88,7 @@ namespace API.Controllers
         {
             try
             {
-                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var val = User.FindFirstValue(Shared.Source.ClaimTypes.PersonId);
                 var personId = int.Parse(val);
 
                 var address = await AddressRepository
@@ -116,7 +116,7 @@ namespace API.Controllers
                 if (id != dto.Id)
                     return BadRequest(new Response(ResponseMessageType.BadRequest));
 
-                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var val = User.FindFirstValue(Shared.Source.ClaimTypes.PersonId);
                 var personId = int.Parse(val);
 
                 var address = await AddressRepository
@@ -146,7 +146,7 @@ namespace API.Controllers
         {
             try
             {
-                var val = User.FindFirstValue(Shared.Common.ClaimTypes.PersonId);
+                var val = User.FindFirstValue(Shared.Source.ClaimTypes.PersonId);
                 var personId = int.Parse(val);
 
                 var address = await AddressRepository

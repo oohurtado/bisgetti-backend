@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shared.Common
+namespace Shared.Source
 {
     public class PersonTypeAttributes : Attribute
     {

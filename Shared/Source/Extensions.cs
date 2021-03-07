@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Shared.Common
+namespace Shared.Source
 {
     public static class EnumExtension
     {

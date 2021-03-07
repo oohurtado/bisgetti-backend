@@ -1,7 +1,7 @@
-using API.Common;
+using API.Source;
 using API.Models;
-using API.Repositories;
-using API.Repositories.Interfaces;
+using API.Source.Repositories;
+using API.Source.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;

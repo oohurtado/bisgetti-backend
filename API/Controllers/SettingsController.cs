@@ -1,15 +1,15 @@
-﻿using API.Repositories.Interfaces;
+﻿using API.Source.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Shared.Common;
 using Shared.Models.Common;
 using Shared.Models.DomainModels;
 using Shared.Models.DTOs;
 using Shared.Models.Jsons;
+using Shared.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;

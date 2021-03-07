@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Shared.Common
+namespace Shared.Source
 {
     public enum PersonType
     {

@@ -1,4 +1,4 @@
-﻿using API.Repositories.Interfaces;
+﻿using API.Source.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Shared.Common;
 using Shared.Models.Common;
 using Shared.Models.DomainModels;
 using Shared.Models.DTOs;
+using Shared.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;

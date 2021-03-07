@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Common
+namespace API.Source
 {
     public static class CustomToken
     {
@@ -41,8 +41,8 @@ namespace API.Common
             {
                 new Claim(ClaimTypes.Email, email),
                 new Claim(ClaimTypes.Role, role),
-                new Claim(Shared.Common.ClaimTypes.UserId, userId),
-                new Claim(Shared.Common.ClaimTypes.PersonId, personId.ToString()),
+                new Claim(Shared.Source.ClaimTypes.UserId, userId),
+                new Claim(Shared.Source.ClaimTypes.PersonId, personId.ToString()),
             };
 
             return claims;

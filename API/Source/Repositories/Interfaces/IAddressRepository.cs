@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace API.Repositories.Interfaces
+namespace API.Source.Repositories.Interfaces
 {
     public interface IAddressRepository
     {
