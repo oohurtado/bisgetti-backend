@@ -13,6 +13,7 @@ namespace Shared.Models.DomainModels
         public int Id { get; set; }        
 
         // fields
+        public string TrackChangesId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public bool IsNew { get; set; }

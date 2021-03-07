@@ -45,11 +45,6 @@ namespace API.Source.Repositories
             return await Context.SaveChangesAsync();
         }
 
-        public void Update(Address address)
-        {
-            Context.Entry(address).State = EntityState.Modified;
-        }
-
         public IQueryable<Address> GetByPage(string column, string order, int pageNumber, int pageSize, string term, out int grandTotal)
         {
             IQueryable<Address> addresses;

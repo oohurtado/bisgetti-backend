@@ -41,11 +41,6 @@ namespace API.Source.Repositories
             await Context.AddAsync(settings);
         }
 
-        public void Update(Settings settings)
-        {
-            Context.Entry(settings).State = EntityState.Modified;
-        }
-
         public async Task<int> SaveAsync()
         {
             return await Context.SaveChangesAsync();

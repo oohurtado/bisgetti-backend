@@ -74,9 +74,9 @@ namespace API.Source.Repositories
             return await Context.SaveChangesAsync();
         }
 
-        public void Update(Product product)
+        public void TrackChanges(Product product)
         {
-            Context.Entry(product).State = EntityState.Modified;
+            product.TrackChangesId = Guid.NewGuid().ToString();
         }
     }
 }

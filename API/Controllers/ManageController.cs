@@ -79,7 +79,6 @@ namespace API.Controllers
                         person.IsVerified = true;
                         person.Name = dto.Name;
 
-                        PersonRepository.Update(person);
                         await PersonRepository.SaveAsync();
                     }
 

@@ -124,7 +124,6 @@ namespace API.Controllers
                     .FirstOrDefaultAsync();
 
                 Mapper.Map(dto, address);
-                AddressRepository.Update(address);
                 await AddressRepository.SaveAsync();
 
                 return Ok();

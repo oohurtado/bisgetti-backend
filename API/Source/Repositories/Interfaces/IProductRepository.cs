@@ -13,7 +13,7 @@ namespace API.Source.Repositories.Interfaces
         Task<int> SaveAsync();
         public IQueryable<Product> GetByPage(string column, string order, int pageNumber, int pageSize, string term, out int grandTotal);
         IQueryable<Product> Get(Expression<Func<Product, bool>> expression, bool withTies = false);
-        void Update(Product product);
         void Remove(Product product);
+        void TrackChanges(Product product);
     }
 }

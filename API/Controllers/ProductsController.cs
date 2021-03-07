@@ -42,6 +42,7 @@ namespace API.Controllers
                 var product = Mapper.Map<Product>(dto);
 
                 await ProductRepository.AddAsync(product);
+                ProductRepository.TrackChanges(product);
                 await ProductRepository.SaveAsync();
 
                 return Ok();
@@ -112,7 +113,7 @@ namespace API.Controllers
                     .FirstOrDefaultAsync();
 
                 Mapper.Map(dto, product);
-                ProductRepository.Update(product);
+                ProductRepository.TrackChanges(product);
                 await ProductRepository.SaveAsync();
 
                 return Ok();
