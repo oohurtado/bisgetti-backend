@@ -41,14 +41,15 @@ namespace API.Controllers
             {
                 if (dto.GenerateProducts)
                 {
-                    var products = await ProductRepository.Get(p => p.IsHidden == false, false)
+                    var products = await ProductRepository
+                        .Get(p => p.IsHidden == false, false)
                         .ToListAsync();
 
-                    var settings = await SettingsRepository.Get(p => true)
+                    var settings = await SettingsRepository
+                        .Get(p => true)
                         .FirstOrDefaultAsync();
 
                     settings.MenuProductsJson = JsonConvert.SerializeObject(products);
-                    settings.MenuVersion = Guid.NewGuid().ToString();
                     await SettingsRepository.SaveAsync();
                 }
 
@@ -97,7 +98,6 @@ namespace API.Controllers
                     .FirstOrDefaultAsync();
 
                 settings.MenuProductsJson = null;
-                settings.MenuVersion = null;
 
                 await SettingsRepository.SaveAsync();
 

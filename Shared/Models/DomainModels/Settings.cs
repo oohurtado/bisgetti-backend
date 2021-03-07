@@ -15,7 +15,6 @@ namespace Shared.Models.DomainModels
         public decimal ShippingCost { get; set; }
 
         #region Menu
-        public string MenuVersion { get; set; }
         public string MenuProductsJson { get; set; }
         #endregion
 
