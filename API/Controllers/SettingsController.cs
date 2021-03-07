@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using Shared.Models.Common;
 using Shared.Models.DomainModels;
 using Shared.Models.DTOs;
-using Shared.Models.Jsons;
 using Shared.Source;
 using System;
 using System.Collections.Generic;
@@ -66,7 +65,8 @@ namespace API.Controllers
         {
             try
             {
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
                 List<Product> products = new List<Product>();
@@ -94,7 +94,8 @@ namespace API.Controllers
         {
             try
             {
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
                 settings.MenuProductsJson = null;
@@ -114,17 +115,14 @@ namespace API.Controllers
         {
             try
             {
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
                 SettingsMenuTitlesDTO model = new SettingsMenuTitlesDTO();
-                MenuTitlesJson menuTitlesJson = new MenuTitlesJson();
-                if (!string.IsNullOrEmpty(settings.MenuMessagesJson))
+                if (!string.IsNullOrEmpty(settings.MenuTitlesJson))
                 {
-                    menuTitlesJson = JsonConvert.DeserializeObject<MenuTitlesJson>(settings.MenuMessagesJson);
-
-                    model.FirstTitle = menuTitlesJson.FirstTitle;
-                    model.SecondTitle = menuTitlesJson.SecondTitle;
+                    model = JsonConvert.DeserializeObject<SettingsMenuTitlesDTO>(settings.MenuTitlesJson);
                 }
 
                 return model;
@@ -142,16 +140,11 @@ namespace API.Controllers
         {
             try
             {
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
-                MenuTitlesJson menuTitlesJson = new MenuTitlesJson()
-                {
-                    FirstTitle = dto.FirstTitle,
-                    SecondTitle = dto.SecondTitle
-                };
-
-                settings.MenuMessagesJson = JsonConvert.SerializeObject(menuTitlesJson);
+                settings.MenuTitlesJson = JsonConvert.SerializeObject(dto);
                 await SettingsRepository.SaveAsync();
 
                 return Ok();
@@ -167,19 +160,14 @@ namespace API.Controllers
         {
             try
             {                
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
                 SettingsPlaceInformationDTO model = new SettingsPlaceInformationDTO();
-                PlaceInformationJson placeInformationJson = new PlaceInformationJson();
                 if (!string.IsNullOrEmpty(settings.PlaceInformationJson))
                 {
-                    placeInformationJson = JsonConvert.DeserializeObject<PlaceInformationJson>(settings.PlaceInformationJson);
-
-                    model.Address = placeInformationJson.Address;
-                    model.Emails = placeInformationJson.Emails;
-                    model.OpenHours = placeInformationJson.OpenHours;
-                    model.Phones = placeInformationJson.Phones;
+                    model = JsonConvert.DeserializeObject<SettingsPlaceInformationDTO>(settings.PlaceInformationJson);
                 }
 
                 return model;
@@ -193,22 +181,15 @@ namespace API.Controllers
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut(template: "updatePlaceInformation")]
-        public async Task<ActionResult> UpdatePlaceInformation([FromBody] PlaceInformationJson dto)
+        public async Task<ActionResult> UpdatePlaceInformation([FromBody] SettingsPlaceInformationDTO dto)
         {
             try
             {
-                var settings = await SettingsRepository.Get(p => true)
+                var settings = await SettingsRepository
+                    .Get(p => true)
                     .FirstOrDefaultAsync();
 
-                PlaceInformationJson placeInformationJson = new PlaceInformationJson()
-                {
-                    Address = dto.Address,
-                    Emails = dto.Emails,
-                    OpenHours = dto.OpenHours,
-                    Phones = dto.Phones,
-                };
-
-                settings.PlaceInformationJson = JsonConvert.SerializeObject(placeInformationJson);
+                settings.PlaceInformationJson = JsonConvert.SerializeObject(dto);
                 await SettingsRepository.SaveAsync();
 
                 return Ok();

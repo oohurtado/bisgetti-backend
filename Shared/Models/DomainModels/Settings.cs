@@ -19,7 +19,7 @@ namespace Shared.Models.DomainModels
         #endregion
 
         #region More jsons
-        public string MenuMessagesJson { get; set; }
+        public string MenuTitlesJson { get; set; }
         public string PlaceInformationJson { get; set; } 
         #endregion
     }
