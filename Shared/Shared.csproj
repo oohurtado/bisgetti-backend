@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Jsons\" />
+    <Compile Remove="Models\Jsons\**" />
+    <EmbeddedResource Remove="Models\Jsons\**" />
+    <None Remove="Models\Jsons\**" />
   </ItemGroup>
 
 </Project>
