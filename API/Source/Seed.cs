@@ -1,5 +1,4 @@
-﻿using API.Models;
-using API.Source.Repositories.Interfaces;
+﻿using Shared.Source.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Shared;
@@ -8,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shared.Models;
 
 namespace API.Source
 {

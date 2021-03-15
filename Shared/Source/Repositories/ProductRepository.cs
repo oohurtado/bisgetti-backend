@@ -1,4 +1,4 @@
-﻿using API.Source.Repositories.Interfaces;
+﻿using Shared.Source.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Shared.Models.DomainModels;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace API.Source.Repositories
+namespace Shared.Source.Repositories
 {
     public class ProductRepository : IProductRepository
     {

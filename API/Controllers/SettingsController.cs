@@ -1,4 +1,4 @@
-﻿using API.Source.Repositories.Interfaces;
+﻿using Shared.Source.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

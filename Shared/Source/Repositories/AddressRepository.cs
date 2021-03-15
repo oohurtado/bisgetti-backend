@@ -1,13 +1,13 @@
-﻿using API.Source.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Shared.Models.DomainModels;
+﻿using Shared.Models.DomainModels;
+using Shared.Source;
+using Shared.Source.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace API.Source.Repositories
+namespace Shared.Source.Repositories
 {
     public class AddressRepository : IAddressRepository
     {

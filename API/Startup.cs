@@ -1,7 +1,6 @@
 using API.Source;
-using API.Models;
-using API.Source.Repositories;
-using API.Source.Repositories.Interfaces;
+using Shared.Source.Repositories;
+using Shared.Source.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +23,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Models;
+using Shared.Source;
 
 namespace API
 {

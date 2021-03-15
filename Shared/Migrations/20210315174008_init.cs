@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace API.Migrations
+namespace Shared.Migrations
 {
     public partial class init : Migration
     {
@@ -71,6 +71,7 @@ namespace API.Migrations
                 {
                     Product_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    TrackChangesId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: false),
                     IsNew = table.Column<bool>(type: "bit", nullable: false),
@@ -91,15 +92,12 @@ namespace API.Migrations
                 {
                     Settings_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuMsgTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MenuMsgDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MenuMsgExtra = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     IsOnlineActive = table.Column<bool>(type: "bit", nullable: false),
-                    PlaceInformationJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HasHomeDelivery = table.Column<bool>(type: "bit", nullable: false),
                     ShippingCost = table.Column<decimal>(type: "money", nullable: false),
-                    MenuVersion = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MenuJson = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    MenuProductsJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MenuTitlesJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PlaceInformationJson = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -218,7 +216,7 @@ namespace API.Migrations
                 {
                     Address_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Person_Id = table.Column<int>(type: "int", nullable: true),
+                    Person_Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Street = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -240,9 +238,10 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_Person_Id",
+                name: "IX_Addresses_Person_Id_Name",
                 table: "Addresses",
-                column: "Person_Id");
+                columns: new[] { "Person_Id", "Name" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

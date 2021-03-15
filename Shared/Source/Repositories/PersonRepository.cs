@@ -1,4 +1,4 @@
-﻿using API.Source.Repositories.Interfaces;
+﻿using Shared.Source.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Models.DomainModels;
 using Shared.Source;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Source.Repositories
+namespace Shared.Source.Repositories
 {
     public class PersonRepository : IPersonRepository
     {

@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Source.Repositories.Interfaces
+namespace Shared.Source.Repositories.Interfaces
 {
     public interface IPersonRepository
     {

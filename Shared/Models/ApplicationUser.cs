@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace Shared.Models
 {
     public class ApplicationUser : IdentityUser
     {

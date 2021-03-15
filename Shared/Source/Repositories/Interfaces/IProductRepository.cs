@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace API.Source.Repositories.Interfaces
+namespace Shared.Source.Repositories.Interfaces
 {
     public interface IProductRepository
     {
