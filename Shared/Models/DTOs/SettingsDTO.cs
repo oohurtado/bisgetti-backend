@@ -23,16 +23,16 @@ namespace Shared.Models.DTOs
 
     public class SettingsPlaceInformationDTO
     {
-        [StringLength(250, MinimumLength = 1)]
+        [StringLength(250, MinimumLength = 0)]
         public string Address { get; set; }
 
-        [StringLength(250, MinimumLength = 1)]
+        [StringLength(250, MinimumLength = 0)]
         public string OpenHours { get; set; }
 
-        [StringLength(250, MinimumLength = 1)]
+        [StringLength(250, MinimumLength = 0)]
         public string Phones { get; set; }
 
-        [StringLength(250, MinimumLength = 1)]
+        [StringLength(250, MinimumLength = 0)]
         public string Emails { get; set; }
     }
 
